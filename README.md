@@ -2,13 +2,15 @@
 
 Onion is a Web Recipe App. It uses Python Flask as backend and work with SQL servers.
 
+There exists a SQL Injection for my project Security at INSA CVL Bourges
+
 ## Installation
 
 Use Git and package manager pip to install the requirements with the following commands one by one in the command prompt,
 
 ```bash
-git clone https://github.com/kibwalid/Recipe-Web-App.git
-cd Recipe-Web-App
+git clone https://github.com/thanhnguyen287/SQL-Vulnerable.git
+cd 
 .\env\Scripts\activate
 pip install -r requirements.txt
 ```
@@ -41,3 +43,4 @@ For front-end, modules of [Owl Theme](https://owltheme.com/) has been used
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
