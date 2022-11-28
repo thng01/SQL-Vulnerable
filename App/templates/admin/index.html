@@ -1,0 +1,57 @@
+{% extends "admin/base.html" %}
+
+
+{% block content %}
+
+<div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+
+
+            <div class="row">
+              <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Users <div class="float-right">{{user_num}}</div></h5>
+
+                    <a href="#" class="card-link">User Settings</a>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Recipes <div class="float-right">{{recipe_num}}</div></h5>
+
+                    <a href="#" class="card-link">Recipe Settings</a>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Products in Shop <div class="float-right">{{product_num}}</div></h5>
+
+                    <a href="#" class="card-link">Shop Settings</a>
+                  </div>
+                </div>
+
+              </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+{% endblock %}

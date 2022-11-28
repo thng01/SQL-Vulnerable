@@ -1,0 +1,84 @@
+{% extends "unlogged/base.html" %}
+
+{% block content %}
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-12">
+            <div class="section-title mb-5">
+                <h2>Sign-in To You Account</h2>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msg in messages %}
+                <br><small>{{msg}}</small>
+                    {% endfor %}
+                {% else %}
+
+                {% endif %}
+                {% endwith %}
+
+            </div>
+
+
+
+            <form role="form" action="" method="POST">
+                {{ form.hidden_tag() }}
+
+                  <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.username.label() }}
+                          {% if form.username.errors %}
+                            {{ form.username(class="form-control form-control-lg is-invalid", placeholder="Username") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.username.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.username(class="form-control", placeholder="Username") }}
+                          {% endif %}
+                  </div>
+                  </div>
+
+                <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.password.label() }}
+                          {% if form.password.errors %}
+                            {{ form.password(class="form-control form-control-lg is-invalid", placeholder="Password") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.password(class="form-control", placeholder="Password") }}
+                          {% endif %}
+                  </div>
+                  </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                    {{ form.remember(class="control-input") }}
+                    {{ form.remember.label(class="control-label") }}
+                    </div>
+                </div>
+
+                  <div class="row">
+                      <div class="col-12">
+                          {{ form.submit(class="btn btn-primary py-3 px-5") }}
+                      </div>
+                  </div>
+
+            </form>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,173 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-12">
+            <div class="section-title mb-5">
+                <h2>Add User / Admin</h2>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msg in messages %}
+                <br><small>{{msg}}</small>
+                    {% endfor %}
+                {% else %}
+
+                {% endif %}
+                {% endwith %}
+
+            </div>
+
+
+
+            <form role="form" action="" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                  <div class="row">
+                      <div class="col-md-6 form-group">
+                          {{ form.name.label() }}
+                          {% if form.name.errors %}
+                            {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Full Name") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.name.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.name(class="form-control", placeholder="Full Name") }}
+                          {% endif %}
+                  </div>
+
+                      <div class="col-md-6 form-group">
+                          {{ form.email.label() }}
+                          {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid", placeholder="you@email.com") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.email.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.email(class="form-control", placeholder="you@email.com") }}
+                          {% endif %}
+                  </div>
+                  </div>
+
+                <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.username.label() }}
+                          {% if form.username.errors %}
+                            {{ form.username(class="form-control form-control-lg is-invalid", placeholder="Username") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.username.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.username(class="form-control", placeholder="Username") }}
+                          {% endif %}
+                  </div>
+                  </div>
+
+                <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.password.label() }}
+                          {% if form.password.errors %}
+                            {{ form.password(class="form-control form-control-lg is-invalid", placeholder="Password") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.password(class="form-control", placeholder="Password") }}
+                          {% endif %}
+                  </div>
+                  </div>
+
+                <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.confirm_password.label() }}
+                          {% if form.confirm_password.errors %}
+                            {{ form.confirm_password(class="form-control form-control-lg is-invalid", placeholder="Confirm Password") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.confirm_password.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+                          {% endif %}
+                  </div>
+                  </div>
+
+                <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.designation.label() }}
+                          {% if form.designation.errors %}
+                            {{ form.designation(class="form-control form-control-lg is-invalid", placeholder="(i.e Chef/User)") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.designation.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.designation(class="form-control", placeholder="(i.e Chef/User)") }}
+                          {% endif %}
+                  </div>
+                  </div>
+
+
+                <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.type.label() }}
+                          {% if form.type.errors %}
+                            {{ form.type(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.type.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                      </div>
+                          {% else %}
+                            {{ form.type(class="form-control") }}
+                          {% endif %}
+                  </div>
+                  </div>
+
+
+                 <div class="row">
+                      <div class="col-md-12 form-group">
+                          {{ form.image.label() }} <sup><small>(Not Required)</small></sup>
+                          {{ form.image(class="form-control-file") }}
+                          {% if form.image.errors %}
+                            {% for error in form.image.errors %}
+                          <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
+                          {% endif %}
+
+                      </div>
+                  </div>
+
+                <br>
+
+
+
+                  <div class="row">
+                      <div class="col-12">
+                          {{ form.submit(class="btn btn-primary py-3 px-5") }}
+                      </div>
+                  </div>
+
+            </form>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    {% endblock %}

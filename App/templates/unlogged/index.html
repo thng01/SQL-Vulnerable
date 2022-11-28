@@ -1,0 +1,162 @@
+{% extends "unlogged/base.html" %}
+
+{% block content %}
+
+
+    <div class="site-section py-0">
+      <div class="owl-carousel hero-slide owl-style">
+
+        {% if editor_recipe %}
+        {% for recipe in editor_recipe %}
+        <div class="site-section">
+          <div class="container">
+            <div class="half-post-entry d-block d-lg-flex bg-light">
+              <div class="img-bg" style="background-image: url('{{ url_for('static', filename= 'images/' + recipe.image) }}')"></div>
+              <div class="contents">
+                <span class="caption">Editor's Pick</span>
+                <h2><a href="{{ url_for('single_recipe', recipe_id=recipe.id ) }}">{{recipe.title}}</a></h2>
+                <p class="mb-3">{{recipe.description[:250]}}... <a href="{{ url_for('single_recipe', recipe_id=recipe.id ) }}">Read more</a></p>
+                <div class="post-meta">
+                  <span class="d-block">Author: <a href="#">{{recipe.recipe_creator.name}}</a></span>
+                  <span class="date-read">
+
+                    {% if recipe.approval < 0 %}
+                        Not Verified <span class="mx-1">&bullet;</span>
+                    {% elif recipe.approval > 0 %}
+                        Admin Verified <span class="icon-star2"></span>
+                    {% else %}
+                        Rejected
+                    {% endif %}
+
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="site-section">
+          <div class="container">
+            <div class="half-post-entry d-block d-lg-flex bg-light">
+              <div class="img-bg" style="background-image: url('{{ url_for('static', filename='images/register.jpg') }}')"></div>
+              <div class="contents">
+                <span class="caption">Register Now!</span>
+                <h2><a href="">Have a recipe? Publish it on Onion</a></h2>
+                  <p class="mb-3">Share your story through your dishes to our community of Food enthusiasts. Onion provides a variety of support from selling your homemade ingredients to finding your dream job by creating a public portfolio for Chefs</p>
+                <div class="post-meta">
+                  <span class="d-block"><a href="{{ url_for('register') }}">Register Now</a></span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+
+
+
+      </div>
+    </div>
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-12">
+                <div class="section-title">
+                  <h2>Top Contributors</h2>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="post-entry-1">
+                  <a href="post-single.html"><img src="{{ url_for('static', filename='images/register.jpg') }}" alt="Image" class="img-fluid"></a>
+                  <h2><a href="">Have a recipe? Publish it on Onion</a></h2>
+                  <p>Share your story through your dishes to our community of Food enthusiasts. Onion provides a variety of support from selling your homemade ingredients to finding your dream job by creating a public portfolio for Chefs</p>
+                  <div class="post-meta">
+                  <span class="d-block"><a href="{{ url_for('register') }}">Register Now</a></span>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-6">
+                {% if users.items %}
+
+                {% for users in users.items %}
+
+                <div class="post-entry-2 d-flex bg-light">
+                 <div class="thumbnail" style="background-image: url('{{ url_for('static', filename= 'images/' + users.profile_pic) }}')"></div>
+
+                  <div class="contents">
+                    <h2><a href="{{ url_for('user_profile', user_id=users.id ) }}">{{users.name}}</a></h2>
+                    <div class="post-meta">
+                      <span class="d-block">Email : <a href="mailto: {{ users.email }}">{{users.email}}</a></span>
+                      <span class="d-block">Recipe Posted : {{ users.recipes|length }}</span>
+                      <span class="d-block">Designation : {{ users.designation|capitalize }}</span>
+
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                  {% else %}
+                  <p>There are no recipe contributors at this moment.</p>
+                  {% endif %}
+
+
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 ml-auto">
+            <div class="section-title">
+              <h2>Featured Recipes</h2>
+            </div>
+              {% if featured %}
+            {% for featured in featured %}
+            <div class="trend-entry d-flex">
+              <div class="trend-contents">
+                <h2><a href="blog-single.html">{{featured.title}}</a></h2>
+                <div class="post-meta">
+                  <span class="d-block"><a href="{{ url_for('user_profile', user_id=featured.recipe_creator.id ) }}">{{featured.recipe_creator.name}}</a></span>
+                  <span class="date-read">
+
+                      {% if featured.approval < 0 %}
+                        Not Verified <span class="mx-1">&bullet;</span>
+                    {% elif featured.approval > 0 %}
+                        Admin Verified <span class="icon-star2"></span>
+                    {% else %}
+                        Rejected
+                    {% endif %}
+
+                  </span>
+                </div>
+              </div>
+            </div>
+              {% else %}
+              <p>There are no featured recipe at this moment</p>
+            {% endfor %}
+              {% endif %}
+
+            <p>
+              <a href="{{ url_for('recipes') }}" class="more">See All Recipes <span class="icon-keyboard_arrow_right"></span></a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+{% endblock %}

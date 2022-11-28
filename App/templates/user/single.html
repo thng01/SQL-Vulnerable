@@ -1,0 +1,92 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 single-content">
+
+            <p class="mb-5">
+              <img src="{{ url_for('static', filename= 'images/' + recipe.image) }}" alt="Image" class="img-fluid">
+            </p>
+            <h1 class="mb-4">
+              {{recipe.title}}
+            </h1>
+            <div class="post-meta d-flex mb-5">
+              <div class="bio-pic mr-3">
+                <img src="{{ url_for('static', filename= 'images/' + recipe.recipe_creator.profile_pic) }}" alt="Image" class="img-fluidid">
+              </div>
+              <div class="vcard">
+                <span class="d-block">Author: <a href="{{ url_for('user.user_profile', user_id=recipe.recipe_creator.id ) }}">{{recipe.recipe_creator.name}}</a></span>
+                <span class="read">
+                    {% if recipe.approval < 0 %}
+                        Not Verified <span class="mx-1">&bullet;</span>
+                    {% elif recipe.approval > 0 %}
+                        Admin Verified <span class="icon-star2"></span>
+                    {% else %}
+                        Rejected
+                    {% endif %}</span>
+              </div>
+            </div>
+
+            <p>{{recipe.description}}</p>
+
+
+            <div class="pt-5">
+
+                <h4 style="color: black">Ingredients</h4><br>
+                {% for ingredient in ingredients %}
+                    <li>{{ingredient}}</li>
+                {% endfor %}
+
+            </div>
+
+
+
+          </div>
+
+
+          <div class="col-lg-3 ml-auto">
+            <div class="section-title">
+              <h2>Featured Recipes</h2>
+            </div>
+              {% if featured %}
+            {% for featured in featured %}
+            <div class="trend-entry d-flex">
+              <div class="trend-contents">
+                <h2><a href="blog-single.html">{{featured.title}}</a></h2>
+                <div class="post-meta">
+                  <span class="d-block"><a href="{{ url_for('user.user_profile', user_id=featured.recipe_creator.id ) }}">{{featured.recipe_creator.name}}</a></span>
+                  <span class="date-read">
+
+                      {% if featured.approval < 0 %}
+                        Not Verified <span class="mx-1">&bullet;</span>
+                    {% elif featured.approval > 0 %}
+                        Admin Verified <span class="icon-star2"></span>
+                    {% else %}
+                        Rejected
+                    {% endif %}
+
+                  </span>
+                </div>
+              </div>
+            </div>
+              {% else %}
+              <p>There are no featured recipe at this moment</p>
+            {% endfor %}
+              {% endif %}
+
+            <p>
+              <a href="{{ url_for('user.recipes') }}" class="more">See All Recipes <span class="icon-keyboard_arrow_right"></span></a>
+            </p>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+{% endblock %}
