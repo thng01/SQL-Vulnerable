@@ -1,0 +1,10 @@
+[Unit]
+Description = flask python command to do useful stuff
+
+[Service]
+User=user2
+ExecStart = /home/user2/SQL-Vulnerable/flask.sh
+Restart=always
+
+[Install]
+WantedBy = multi-user.target
