@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 /home/user2/SQL-Vulnerable/run.py
+python3 /home/user1/SQL-Vulnerable/run.py
