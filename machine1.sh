@@ -2,7 +2,7 @@
 
 #Creating user
 touch scriptPasswdUser1.sh
-sudo adduser -m knight
+sudo useradd -m knight
 sudo echo "echo 'knight:@s3cur3mdp' | chpasswd" > scriptPasswdUser1.sh
 sudo chmod +x scriptPasswdUser1.sh
 sudo ./scriptPasswdUser1.sh
