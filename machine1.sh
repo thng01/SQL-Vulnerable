@@ -8,7 +8,7 @@ sudo chmod +x scriptPasswd.sh
 sudo ./scriptPasswd.sh
 
 touch scriptPasswdUser1.sh
-sudo useradd -m knight
+sudo useradd -m -s /bin/bash knight
 sudo echo "echo 'knight:@s3cur3mdp' | chpasswd" > scriptPasswdUser1.sh
 sudo chmod +x scriptPasswdUser1.sh
 sudo ./scriptPasswdUser1.sh
