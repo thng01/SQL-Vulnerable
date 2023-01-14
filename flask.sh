@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 /home/debian/SQL-Vulnerable/run.py
+python3 /SQL-Vulnerable/run.py
