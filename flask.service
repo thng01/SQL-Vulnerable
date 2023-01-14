@@ -3,7 +3,7 @@ Description = flask python command to do useful stuff
 
 [Service]
 User=debian
-ExecStart = /SQL-Vulnerable/flask.sh
+ExecStart = /home/debian/SQL-Vulnerable/flask.sh
 Restart=always
 
 [Install]
