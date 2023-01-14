@@ -25,7 +25,6 @@
                   <div class="contents">
                     <h2><a href="{{ url_for('user.user_profile', user_id=users.id ) }}">Name: {{users.name}}</a></h2>
                     <div class="post-meta">
-                      <span class="d-block">Username : {{users.username}}</span>
                       <span class="d-block">Email : <a href="mailto: {{ users.email }}">{{users.email}}</a></span>
                       <span class="d-block">Designation : {{ users.designation|capitalize }}</span>
                       <span class="d-block">Recipe Posted : {{ users.recipes|length }}</span>
